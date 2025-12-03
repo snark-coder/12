@@ -9,10 +9,8 @@ pipeline {
 
                     // Install Python dependencies
                     bat '''
-          py -3 -m venv .venv
-          call .\\.venv\\Scripts\\activate
-          python -m pip install --upgrade pip
-          python -m pip install --no-cache-dir -r requirements.txt
+          
+          pip install --no-cache-dir -r requirements.txt
 
         '''
 
