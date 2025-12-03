@@ -8,7 +8,13 @@ pipeline {
                     echo "Running Selenium Tests using pytest"
 
                     // Install Python dependencies
-                    bat 'pip install --no-cache-dir -r requirements.txt'
+                    bat '''
+          py -3 -m venv .venv
+          call .\\.venv\\Scripts\\activate
+          python -m pip install --upgrade pip
+          python -m pip install --no-cache-dir -r requirements.txt
+          python -m pytest -q
+        '''
 
                     // ✅ Start Flask app in background
                     bat 'start /B python app.py'
